@@ -25,10 +25,14 @@
                        name="emailInput"
                        id="emailInput"
                        required />
-                <p class="validation-error" ng-if="signUpForm.emailInput.$error.required">
+                <p class="validation-error email-required-error"
+                   ng-if="signUpForm.emailInput.$dirty &&
+                   signUpForm.emailInput.$error.required">
                     An email address is required
                 </p>
-                <p class="validation-error" ng-if="signUpForm.emailInput.$error.email">
+                <p class="validation-error email-invalid-error"
+                   ng-if="signUpForm.emailInput.$dirty &&
+                   signUpForm.emailInput.$error.email">
                     The email you provided is invalid
                 </p>
             </div>
