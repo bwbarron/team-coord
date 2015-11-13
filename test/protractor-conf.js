@@ -1,5 +1,5 @@
 exports.config = {
-    seleniumAddress: '',
+    seleniumAddress: 'http://localhost:4444/wd/hub',
     specs: ['*-spec.js'],
-    rootElement: ''
+    rootElement: 'body'
 };

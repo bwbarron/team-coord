@@ -1,0 +1,28 @@
+<!doctype.html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1">
+        <title>Sign Up Form</title>
+        <link rel = "stylesheet" href="css/main.css"/>
+
+        <!-- angular script file -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <!-- our script file -->
+        <script src="js/app.js"></script>
+    </head>
+    <body ng-app = "">
+        <h1>Sign Up</h1>
+        <p>Our Service is fun and awesome, but you must be 13 years old to join</p>
+
+        <form name = "signUpForm" novalidate>
+
+
+
+            <div class = "form-group">
+                <button>Reset</button>
+                <button ng-disabled = "signUpForm.$invalid">Submit</button>
+            </div>
+        </form>
+    </body>
+</html>
