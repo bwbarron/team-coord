@@ -1,5 +1,4 @@
 angular.module('SignUp', [])
-
     .directive("matchingPasswords", function () {
         return {
             require: "ngModel",
