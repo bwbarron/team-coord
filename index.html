@@ -18,7 +18,28 @@
         <form name = "signUpForm" ng-submit="submit()" novalidate>
 
 
+            <div class="form-group">
+                <label for="pass">Password</label>
+                <input type="password" class="form-control" id="pass" name="pass" ng-model="user.pass" required/>
+                <p ng-if="signUpForm.pass.$dirty && signUpForm.pass.$error.required" class="validation-error" id="missing-pass">
+                    Please enter a password
+                </p>
+            </div>
 
+            <div class="form-group">
+                <label for="pass_confirm">Confirm Password</label>
+                <input type="password" class="form-control" id="pass_confirm" name="pass_confirm"
+                       ng-model="user.pass_conf" matching-passwords required/>
+                <p ng-if="signUpForm.pass_confirm.$dirty && signUpForm.pass_confirm.$error.required"
+                   class="validation-error" id="missing-pass-conf">
+                    Please confirm your password
+                </p>
+                <p ng-if="signUpForm.pass_confirm.$dirty && signUpForm.pass_confirm.$error.matchingPasswords"
+                   class="validation-error" id="pass-matching-error">
+                    Must match your password entered above
+                </p>
+            </div>
+            
             <div class = "form-group">
                 <button>Reset</button>
                 <button ng-disabled = "signUpForm.$invalid">Submit</button>
