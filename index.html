@@ -37,6 +37,19 @@
                 </p>
             </div>
 
+            <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input type="text" class="form-control" id="fname"
+                name="fname" ng-model="user.fname"/>
+            </div>
+            <div class="form-group">
+                <label for="lname">Last Name:</label>
+                <input type="text" class="form-control" id="lname"
+                        name="lname" placeholder="Your Last Name" ng-model="user.lname" required/>
+                <p class="validation-error"
+                    ng-if="signUpForm.lname.$dirty && signUpForm.lname.$error.required">Last Name is required.</p>
+            </div>
+
             <div class = "form-group">
                 <button>Reset</button>
                 <button ng-disabled = "signUpForm.$invalid">Submit</button>

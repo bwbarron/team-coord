@@ -30,5 +30,17 @@ describe('sign up app', function() {
         emailInput.sendKeys('johnsmith123@gmail.com');
         expect(emailInvalidMessage.isPresent()).toEqual(false);
         emailInput.clear();
-    })
+    });
+
+    it('must show last name validation error', function() {
+        var requiredMsg = $('.validation-error');
+        var name = element.(by.model('user.lname'));
+        expect(requiredMsg.isPresent()).toEqual(false);
+        name.sendKeys('Johnson');
+        name.clear();
+        expect(requiredMsg.isPresent()).toEqual(true);
+        name.sendKeys('Johnson');
+        expect(requiredMsg.isPresent()).toEqual(false);
+
+    });
 });
