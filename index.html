@@ -6,54 +6,59 @@
         <title>Sign Up Form</title>
         <link rel = "stylesheet" href="css/main.css"/>
 
+        <!--Bootstrap css, using integrity attr to ensure correct content was downloaded -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
         <!-- angular script file -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
         <!-- our script file -->
         <script src="js/app.js"></script>
     </head>
     <body ng-app = "SignUp" ng-controller="FormController">
-        <h1>Sign Up</h1>
-        <p>Our Service is fun and awesome, but you must be 13 years old to join</p>
+        <div class="container">
+            <h1>Sign Up</h1>
+            <p>Our Service is fun and awesome, but you must be 13 years old to join</p>
 
-        <form name = "signUpForm" ng-submit="submit()" novalidate>
+            <form name = "signUpForm" ng-submit="submit()" novalidate>
 
-            <div class="form-group">
-                <label for="emailInput">Email</label>
-                <input type="email"
-                       class="form-control"
-                       ng-model="user.email"
-                       name="emailInput"
-                       id="emailInput"
-                       required />
-                <p class="validation-error email-required-error"
-                   ng-if="signUpForm.emailInput.$dirty &&
+                <div class="form-group">
+                    <label for="emailInput">Email</label>
+                    <input type="email"
+                           class="form-control"
+                           ng-model="user.email"
+                           name="emailInput"
+                           id="emailInput"
+                           required />
+                    <p class="validation-error email-required-error"
+                       ng-if="signUpForm.emailInput.$dirty &&
                    signUpForm.emailInput.$error.required">
-                    An email address is required
-                </p>
-                <p class="validation-error email-invalid-error"
-                   ng-if="signUpForm.emailInput.$dirty &&
+                        An email address is required
+                    </p>
+                    <p class="validation-error email-invalid-error"
+                       ng-if="signUpForm.emailInput.$dirty &&
                    signUpForm.emailInput.$error.email">
-                    The email you provided is invalid
-                </p>
-            </div>
+                        The email you provided is invalid
+                    </p>
+                </div>
 
-            <div class="form-group">
-                <label for="fname">First Name:</label>
-                <input type="text" class="form-control" id="fname"
-                name="fname" ng-model="user.fname"/>
-            </div>
-            <div class="form-group">
-                <label for="lname">Last Name:</label>
-                <input type="text" class="form-control" id="lname"
-                        name="lname" placeholder="Your Last Name" ng-model="user.lname" required/>
-                <p class="validation-error"
-                    ng-if="signUpForm.lname.$dirty && signUpForm.lname.$error.required">Last Name is required.</p>
-            </div>
+                <div class="form-group">
+                    <label for="fname">First Name:</label>
+                    <input type="text" class="form-control" id="fname"
+                           name="fname" ng-model="user.fname"/>
+                </div>
+                <div class="form-group">
+                    <label for="lname">Last Name:</label>
+                    <input type="text" class="form-control" id="lname"
+                           name="lname" placeholder="Your Last Name" ng-model="user.lname" required/>
+                    <p class="validation-error"
+                       ng-if="signUpForm.lname.$dirty && signUpForm.lname.$error.required">Last Name is required.</p>
+                </div>
 
-            <div class = "form-group">
-                <button>Reset</button>
-                <button ng-disabled = "signUpForm.$invalid">Submit</button>
-            </div>
-        </form>
+                <div class = "form-group">
+                    <button class="btn btn-danger">Reset</button>
+                    <button class="btn btn-primary" ng-disabled = "signUpForm.$invalid">Submit</button>
+                </div>
+            </form>
+        </div>
+
     </body>
 </html>
