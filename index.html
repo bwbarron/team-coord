@@ -49,7 +49,21 @@
                 <p class="validation-error"
                     ng-if="signUpForm.lname.$dirty && signUpForm.lname.$error.required">Last Name is required.</p>
             </div>
-
+            <div class="form-group">
+                <label for="birthdate">Birthdate:</label>
+                <label for="month">Month:</label>
+                <select name="month" id="month" ng-model="user.birthMonth" ng-options="month for month in months" required age-check></select>
+                <p class="validation-error" ng-if="signUpForm.month.$error.ageCheck"> Sorry, you must be 13 years old to sign up.</p>
+                <p class="validation-error" ng-if="signUpForm.month.$error.required">You must enter your birth month.</p>
+                <label for="day">Day:</label>
+                <select name="day" id="day" ng-model="user.birthDay" ng-options="day for day in days" required age-check></select>
+                <p class="validation-error" ng-if="signUpForm.day.$error.ageCheck"> Sorry, you must be 13 years old to sign up.</p>
+                <p class="validation-error" ng-if="signUpForm.day.$error.required">You must enter your birth day.</p>
+                <label for="year">Year:</label>
+                <select name="year" id="year" ng-model="user.birthYear" ng-options="year for year in years" required age-check></select>
+                <p class="validation-error" ng-if="signUpForm.year.$error.ageCheck"> Sorry, you must be 13 years old to sign up.</p>
+                <p class="validation-error" ng-if="signUpForm.year.$error.required">You must enter your birth year.</p>
+            </div>
             <div class = "form-group">
                 <button>Reset</button>
                 <button ng-disabled = "signUpForm.$invalid">Submit</button>
