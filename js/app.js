@@ -4,19 +4,7 @@ angular.module('SignUp', [])
         $scope.user = {};
         $scope.submit = function() {
             //submission code
-        }
-
-        $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        $scope.days = [];
-        for (var i = 0; i <= 30; i++) {
-            $scope.days[i] = i+1;
-        }
-        var yr = new Date().getFullYear();
-        $scope.years = [yr];
-        for (var i = 1; i < 100; i++) {
-            $scope.years[i] =  yr - 1;
-            yr -= 1;
-        }
+        };
     })
 
     .directive('ageCheck', function() {
