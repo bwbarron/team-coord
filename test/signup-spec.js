@@ -6,6 +6,18 @@ describe('sign up app', function() {
         browser.get('http://localhost:8000');
     });
 
+    function fillInValidForm() {
+        emailInput.sendKeys('johnsmith123@gmail.com');
+        var name = element(by.model('user.lname'));
+        name.sendKeys('Smith');
+        var bday = element(by.model('user.birthdate'));
+        bday.sendKeys('05/12/1995');
+        var passwordInp = element(by.model("user.pass"));
+        passwordInp.sendKeys('123');
+        var passConfInp = element(by.model("user.pass_conf"));
+        passConfInp.sendKeys('123');
+    }
+
     it('must have the proper page title', function() {
         expect(browser.getTitle()).toEqual('Sign Up Form');
     });
@@ -96,4 +108,21 @@ describe('sign up app', function() {
        expect(invalidBdayMessage.isPresent()).toEqual(true);
 
     });
+
+    it('must disable submit on invalid form', function() {
+        var submitButton = element(by.buttonText('Submit'));
+        expect(submitButton.getAttribute('disabled')).toEqual('true');
+        FillInValidForm();
+        expect(submitButton.getAttribute('disabled')).toBe(null);
+        emailInput.clear();
+        expect(submitButton.getAttribute('disabled')).toEqual('true');
+    });
+
+    it('must show confirmation message', function() {
+        var confirmationMessage = $('.alert-success');
+        expect(confirmationMessage.isPresent()).toEqual(false);
+        fillInValidForm();
+        element(by.buttonText('Submit')).click();
+        expect(confirmationMessage.isPresent()).toEqual(true);
+    })
 });

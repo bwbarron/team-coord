@@ -18,6 +18,8 @@
             <h1>Sign Up</h1>
             <p>Our Service is fun and awesome, but you must be 13 years old to join</p>
 
+            <p class = "alert alert-success" ng-show = "submitted">Your sign up has been submitted!</p>
+
             <form name = "signUpForm" ng-submit="submit()" novalidate>
 
                 <div class="form-group">
@@ -89,7 +91,6 @@
                 </div>
 
                 <div class = "form-group">
-                    <button class="btn btn-danger">Reset</button>
                     <button class="btn btn-primary" ng-disabled = "signUpForm.$invalid">Submit</button>
                 </div>
             </form>
