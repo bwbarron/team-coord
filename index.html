@@ -55,10 +55,10 @@
                 <p class="validation-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.required">
                     Please enter a birthdate
                 </p>
-                <p class="validation-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.pattern">
+                <p class="validation-error bday-invalid-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.pattern">
                     Please enter a birthday in the pattern xx/xx/xxxx
                 </p>
-                <p class="validation-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.ageCheck">
+                <p class="validation-error bday-invalid-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.ageCheck">
                     You must be 13 years or older
                 </p>
             </div>

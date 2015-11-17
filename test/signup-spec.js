@@ -32,7 +32,7 @@ describe('sign up app', function() {
         emailInput.clear();
     });
 
-    it('must show last name validation error', function() {
+    it('must show last name required error', function() {
         var requiredMsg = $('.validation-error');
         var name = element(by.model('user.lname'));
         expect(requiredMsg.isPresent()).toEqual(false);
@@ -41,6 +41,32 @@ describe('sign up app', function() {
         expect(requiredMsg.isPresent()).toEqual(true);
         name.sendKeys('Johnson');
         expect(requiredMsg.isPresent()).toEqual(false);
+
+    });
+
+    it('must show birthday required validation error', function() {
+        var birthdayRequired = $('.validation-error');
+        var bday = element(by.model('user.birthdate'));
+        expect(birthdayRequired.isPresent()).toEqual(false);
+        bday.sendKeys('04/18/1990');
+        bday.clear();
+        expect(birthdayRequired.isPresent()).toEqual(true);
+        bday.sendKeys('07/19/2014');
+
+    });
+
+    it('must show invalid birthday validation error', function() {
+       var invalidBdayMessage = $('.bday-invalid-error');
+       var bdayInput = element(by.model('user.birthdate'));
+       expect(invalidBdayMessage.isPresent()).toEqual(false);
+       bdayInput.sendKeys('8/456/48862');
+       expect(invalidBdayMessage.isPresent()).toEqual(true);
+       bdayInput.clear();
+       bdayInput.sendKeys('02/23/1994');
+       expect(invalidBdayMessage.isPresent()).toEqual(false);
+       bdayInput.clear();
+       bdayInput.sendKeys('09/18/2015');
+       expect(invalidBdayMessage.isPresent()).toEqual(true);
 
     });
 });
