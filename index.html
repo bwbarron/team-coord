@@ -6,66 +6,93 @@
         <title>Sign Up Form</title>
         <link rel = "stylesheet" href="css/main.css"/>
 
+        <!--Bootstrap css, using integrity attr to ensure correct content was downloaded -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
         <!-- angular script file -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
         <!-- our script file -->
         <script src="js/app.js"></script>
     </head>
     <body ng-app = "SignUp" ng-controller="FormController">
-        <h1>Sign Up</h1>
-        <p>Our Service is fun and awesome, but you must be 13 years old to join</p>
+        <div class="container">
+            <h1>Sign Up</h1>
+            <p>Our Service is fun and awesome, but you must be 13 years old to join</p>
 
-        <form name = "signUpForm" ng-submit="submit()" novalidate>
+            <form name = "signUpForm" ng-submit="submit()" novalidate>
 
-            <div class="form-group">
-                <label for="emailInput">Email</label>
-                <input type="email"
-                       class="form-control"
-                       ng-model="user.email"
-                       name="emailInput"
-                       id="emailInput"
-                       required />
-                <p class="validation-error email-required-error"
-                   ng-if="signUpForm.emailInput.$dirty &&
+                <div class="form-group">
+                    <label for="emailInput">Email</label>
+                    <input type="email"
+                           class="form-control"
+                           ng-model="user.email"
+                           name="emailInput"
+                           id="emailInput"
+                           required />
+                    <p class="validation-error email-required-error"
+                       ng-if="signUpForm.emailInput.$dirty &&
                    signUpForm.emailInput.$error.required">
-                    An email address is required
-                </p>
-                <p class="validation-error email-invalid-error"
-                   ng-if="signUpForm.emailInput.$dirty &&
+                        An email address is required
+                    </p>
+                    <p class="validation-error email-invalid-error"
+                       ng-if="signUpForm.emailInput.$dirty &&
                    signUpForm.emailInput.$error.email">
-                    The email you provided is invalid
-                </p>
-            </div>
+                        The email you provided is invalid
+                    </p>
+                </div>
 
-            <div class="form-group">
-                <label for="fname">First Name:</label>
-                <input type="text" class="form-control" id="fname"
-                name="fname" ng-model="user.fname"/>
-            </div>
-            <div class="form-group">
-                <label for="lname">Last Name:</label>
-                <input type="text" class="form-control" id="lname"
-                        name="lname" placeholder="Your Last Name" ng-model="user.lname" required/>
-                <p class="validation-error"
-                    ng-if="signUpForm.lname.$dirty && signUpForm.lname.$error.required">Last Name is required.</p>
-            </div>
-            <div class="form-group">
-                <label for="birthdate">Birthdate:</label>
-                <input type="text" name="birthdate" id="birthdate" ng-model="user.birthdate" pattern="\d{1,2}/\d{1,2}/\d{4}" required age-check>
-                <p class="validation-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.required">
-                    Please enter a birthdate
-                </p>
-                <p class="validation-error bday-invalid-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.pattern">
-                    Please enter a birthday in the pattern xx/xx/xxxx
-                </p>
-                <p class="validation-error bday-invalid-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.ageCheck">
-                    You must be 13 years or older
-                </p>
-            </div>
-            <div class = "form-group">
-                <button>Reset</button>
-                <button ng-disabled = "signUpForm.$invalid">Submit</button>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label for="fname">First Name:</label>
+                    <input type="text" class="form-control" id="fname"
+                    name="fname" ng-model="user.fname"/>
+                </div>
+                <div class="form-group">
+                    <label for="lname">Last Name:</label>
+                    <input type="text" class="form-control" id="lname"
+                            name="lname" placeholder="Your Last Name" ng-model="user.lname" required/>
+                    <p class="validation-error"
+                        ng-if="signUpForm.lname.$dirty && signUpForm.lname.$error.required">Last Name is required.</p>
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">Birthdate:</label>
+                    <input type="text" name="birthdate" id="birthdate" ng-model="user.birthdate" pattern="\d{1,2}/\d{1,2}/\d{4}" required age-check>
+                    <p class="validation-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.required">
+                        Please enter a birthdate
+                    </p>
+                    <p class="validation-error bday-invalid-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.pattern">
+                        Please enter a birthday in the pattern xx/xx/xxxx
+                    </p>
+                    <p class="validation-error bday-invalid-error" ng-if="signUpForm.birthdate.$dirty && signUpForm.birthdate.$error.ageCheck">
+                        You must be 13 years or older
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="pass">Password</label>
+                    <input type="password" class="form-control" id="pass" name="pass" ng-model="user.pass" required/>
+                    <p ng-if="signUpForm.pass.$dirty && signUpForm.pass.$error.required" class="validation-error" id="missing-pass">
+                        Please enter a password
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="pass_confirm">Confirm Password</label>
+                    <input type="password" class="form-control" id="pass_confirm" name="pass_confirm"
+                           ng-model="user.pass_conf" matching-passwords required/>
+                    <p ng-if="signUpForm.pass_confirm.$dirty && signUpForm.pass_confirm.$error.required"
+                       class="validation-error" id="missing-pass-conf">
+                        Please confirm your password
+                    </p>
+                    <p ng-if="signUpForm.pass_confirm.$dirty && signUpForm.pass_confirm.$error.matchingPasswords"
+                       class="validation-error" id="pass-matching-error">
+                        Must match your password entered above
+                    </p>
+                </div>
+
+                <div class = "form-group">
+                    <button class="btn btn-danger">Reset</button>
+                    <button class="btn btn-primary" ng-disabled = "signUpForm.$invalid">Submit</button>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
