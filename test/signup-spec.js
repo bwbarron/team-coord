@@ -112,7 +112,7 @@ describe('sign up app', function() {
     it('must disable submit on invalid form', function() {
         var submitButton = element(by.buttonText('Submit'));
         expect(submitButton.getAttribute('disabled')).toEqual('true');
-        FillInValidForm();
+        fillInValidForm();
         expect(submitButton.getAttribute('disabled')).toBe(null);
         emailInput.clear();
         expect(submitButton.getAttribute('disabled')).toEqual('true');
@@ -120,7 +120,7 @@ describe('sign up app', function() {
 
     it('must show confirmation message', function() {
         var confirmationMessage = $('.alert-success');
-        expect(confirmationMessage.isPresent()).toEqual(false);
+        expect(confirmationMessage.isDisplayed()).toEqual(false);
         fillInValidForm();
         element(by.buttonText('Submit')).click();
         expect(confirmationMessage.isPresent()).toEqual(true);
